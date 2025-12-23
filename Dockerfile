@@ -1,11 +1,11 @@
-# Usamos la imagen oficial
-FROM n8nio/n8n:latest
+# 1. FORZAMOS la versión Debian (esta sí tiene apt-get)
+FROM n8nio/n8n:latest-debian
 
-# Cambiamos a root para tener permisos
+# 2. Permisos de administrador
 USER root
 
-# Instalamos ffmpeg usando comandos de Debian/Ubuntu
+# 3. Instalamos FFmpeg (ahora sí funcionará)
 RUN apt-get update && apt-get install -y ffmpeg
 
-# Volvemos al usuario normal de n8n
+# 4. Volvemos al usuario seguro
 USER node
